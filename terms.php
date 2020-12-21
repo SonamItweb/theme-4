@@ -34,7 +34,8 @@
 
 <body>
         
-    <?php include "configSiteHeader.php"; ?>
+    <?php include "configSiteHeader.php";
+$sq_setting = mysql_fetch_assoc(mysql_query("select terms_of_use from b2c_Settings where setting_id='1'")); ?>
  
 <div class="inner-banner weave-border pkglist-poster">
         <div class="bannerTitle">
@@ -70,12 +71,10 @@
 <div class="trendingNow cc-home-sec-padd paddTop">
     <div class="container">
         <div class="row cc-margin-bottom-60">
-           <!--<div class="col-sm-6 col-md-10 col-md-offset-1">
+           <div class="col-sm-6 col-md-10 col-md-offset-1">
                  <h2 class="marginTop highlight-head text-center"><span>Holidays</span> cruise</h2>
-                 <p class="cc-font-size-17">Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying. Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying. Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying. Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying.</p>
-                 <p class="cc-font-size-17">Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying.</p>
-                 <p class="cc-font-size-17">Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying.</p>
-            </div>-->
+                 <p class="cc-font-size-17"><?= $sq_setting['terms_of_use']?></p>
+            </div>
         </div>
     </div>
 </div>

@@ -1,6 +1,5 @@
 <?php include "config.php"; ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +20,8 @@
     <link rel="alternate" href="index.html" hreflang="en_In" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,700,700i,800,900" rel="stylesheet">
 
-<link rel="manifest" href="img/projectimage/favicon/manifest.json">
-<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
+    <link rel="manifest" href="img/projectimage/favicon/manifest.json">
+    <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
     <link rel="canonical" href="index.html" />
     <link rel="stylesheet" href="css/slider/owl.carousel.min.css" />
     <link rel="stylesheet" href="css/select2.min.css">
@@ -34,14 +33,15 @@
 
 <body>
         
-    <?php include "configSiteHeader.php"; ?>
- 
+<?php include "configSiteHeader.php";
+$sq_setting = mysql_fetch_assoc(mysql_query("select cancellation_policy from b2c_Settings where setting_id='1'")); ?>
+
 <div class="inner-banner weave-border pkglist-poster">
         <div class="bannerTitle">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="text-center">Cancelation Policy</h3>
+                        <h3 class="text-center">Cancellation Policy</h3>
                     </div>
                 </div>
             </div>
@@ -71,11 +71,9 @@
     <div class="container">
         <div class="row cc-margin-bottom-60">
             <div class="col-sm-6 col-md-10 col-md-offset-1">
-                 <h2 class="marginTop highlight-head text-center"><span>Coming Soon</span> cruise</h2>
-                 <!--<p class="cc-font-size-17">Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying. Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying. Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying. Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying.</p>
-                 <p class="cc-font-size-17">Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying.</p>
-                 <p class="cc-font-size-17">Cruising is strongly recommended for couples, and families who are looking for a relaxed holiday experience. Renowned cruise liners have itineraries all across the globe. Come, experience a different way of holidaying.</p>
-            </div> -->
+                <h2 class="marginTop highlight-head text-center"><span>Coming Soon</span> cruise</h2>
+                <p class="cc-font-size-17"><?= $sq_setting['cancellation_policy']?></p>
+            </div>
         </div>
     </div>
 </div>

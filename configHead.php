@@ -2,6 +2,6 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <?php
-    $adminDetail = mysql_fetch_assoc(mysql_query("select * from app_settings where 1"));
-    $contCode = mysql_fetch_assoc(mysql_query("select * from country_list_master where country_id = $adminDetail[country]"));
+$adminDetail = mysql_fetch_assoc(mysql_query("select * from app_settings where 1"));
+$contCode = mysql_fetch_assoc(mysql_query("select * from country_list_master where country_id = $adminDetail[country]"));
 ?>

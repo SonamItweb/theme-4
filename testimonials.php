@@ -4,7 +4,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include "configHead.php"; ?>
+<?php include "configHead.php";
+    $sq_setting = mysql_fetch_assoc(mysql_query("select customer_testimonials from b2c_Settings where setting_id='1'"));
+    $customer_testimonials = json_decode($sq_setting['customer_testimonials']); ?>
 <head>
     <title> </title>
     <meta charset='UTF-8'>
@@ -41,7 +43,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h3 class="text-center">Testimonial</h3>
+                        <h3 class="text-center">Testimonials</h3>
                     </div>
                 </div>
             </div>
@@ -76,23 +78,16 @@
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <div class="owl-carousel owl-theme testimonial-owl">
-                                                <div class="item ">
-                            <div class="media">
-                                <div class="media-left"><div class="testimonial-thumbnail"><img src="img/testimonials/Testi_141117124937_1.png" alt="Testimonial - Life Holidays" class="img-responsive" width="100" height="100"/></div></div>
-                                <div class="media-body"><h4 class="margin0"><b>Coming soon</b></h4><div class="testimonial-body"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></div></div>
-                            </div>
-                        </div>
-                        <div class="item active">
-                            <div class="media">
-                                <div class="media-left"><div class="testimonial-thumbnail"><img src="img/testimonials/Testi_141117022216_1.png" alt="Testimonial - Life Holidays" class="img-responsive" width="100" height="100"/></div></div>
-                                <div class="media-body"><h4 class="margin0"><b>Coming soon</b></h4><div class="testimonial-body"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div></div>
-                            </div>
-                        </div>
-
-
-
-
-
+                            <?php
+                            for($i=0;$i<sizeof($customer_testimonials);$i++){
+                            ?>
+                                <div class="item active">
+                                    <div class="media">
+                                        <div class="media-left"><div class="testimonial-thumbnail"><img src="img/testimonials/Testi_141117022216_1.png" alt="Testimonial - Life Holidays" class="img-responsive" width="100" height="100"/></div></div>
+                                        <div class="media-body"><h4 class="margin0"><b><?= $customer_testimonials[$i]->name ?></b></h4><p class="mar-bottom-5"> <?= $customer_testimonials[$i]->designation ?></p><div class="testimonial-body"><p><?= $customer_testimonials[$i]->testm ?></p></div>
+                                    </div></div>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
