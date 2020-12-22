@@ -39,7 +39,7 @@ $report_logo_small_url = BASE_URL.'images/Receips-Logo-Small.jpg';
 global $secret_key;
 $secret_key = "secret_key_for_iTours";
 
-global $encrypt_decrypt;
+global $encrypt_decrypt,$currency;
 
 
 
@@ -48,6 +48,7 @@ $app_email_id_send = $sq_app_setting['app_email_id'];
 $app_smtp_host = $sq_app_setting['app_smtp_host'];
 $app_smtp_port = $sq_app_setting['app_smtp_port'];
 $app_smtp_password = $sq_app_setting['app_smtp_password'];
+$currency = $sq_app_setting['currency'];
 
 $encrypt_decrypt = new encrypt_decrypt;
 class encrypt_decrypt
