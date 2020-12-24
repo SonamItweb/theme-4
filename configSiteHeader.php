@@ -68,8 +68,12 @@ return false;
                 <div class="row">
                     <div class="col-md-12">
                         <div class="ed-com-t1-left">
+                        <?php
+                          $app_data = mysql_query("select * from b2c_settings");
+                          $result = mysql_fetch_assoc($app_data)
+                     ?>
                             <ul>
-                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <?= $sq_setting['header_strip_note'] ?></li>
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i> <?=  $result['header_strip_note'] ?></li>
                                 <li>Phone: <?php if($contCode['phone_code']!=''){?>(<?= $contCode['phone_code'] ?>)<?php } ?> <?= $adminDetail['app_contact_no'] ?></li>
                             </ul>
                         </div>

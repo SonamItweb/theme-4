@@ -63,64 +63,66 @@
     <div class="container">
         <h3 class="text-primary margin0 cc-font-weight-8 cc-margin-bottom-30">Learn more about new destinations, sightseeing and travel tips on our blog</h3>
         <div class="row">
+
+        <?php
+        $test="select blogs from  b2c_settings";
+        $json=mysql_query($test);
+        while($person=mysql_fetch_assoc($json))
+        { 	
+            $person=json_decode($person['blogs'],true);
+           // echo sizeof($person);
+            $count = 1;
+            for($i=sizeof($person);$i>0;$i--)
+            {
+                $j=$i-1;
+                if ($count>6)
+                {
+                    break;
+                }
+    
+		?>
             <div class="col-md-4 col-sm-6 col-xs-6 blog-col">
                 <div class="blog-box">
                     <div class="blog-thumb">
                         <a href="blog-inner.php">
-                            <img  class="img-responsive img-rounded" style="background-image: url(img/blog/our_experience_of_air_travel_from_mumbai_to_dubai_during_covid_pandemic-298.webp)"><!-- thumb300x169 -->
+                        <?php
+											//Image
+											$sq_img = mysql_query("select blogs from  b2c_settings");
+												while ($row_img = mysql_fetch_assoc($sq_img)){
+												$url = $row_img['image_url'];
+												$pos = strstr($url,'uploads');
+												if ($pos != false)   {
+													$newUrl = preg_replace('/(\/+)/','/',$url); 
+													$newUrl1 = BASE_URL.str_replace('../', '', $newUrl);
+												}
+												else{
+													$newUrl1 =  $url; 
+												}
+							
+						?>
+
+
+                            <img  class="img-responsive img-rounded" style="background-image: src='<?php echo $newUrl1; ?>'" ><!-- thumb300x169 -->
                         </a>
                     </div>
-                    <div class="dateview"><span class="day">24</span><br>Aug</div>
+                    <div class="dateview"><span class="day">Date</span><br>Month</div>
                     <div class="blog-body">
                         <h3 class="blog-title cc-margin-top cc-margin-bottom-0">
-                            Coming Soon..                        </h3>
+                        <?php echo $person[$j]['title']; ?>                     
+                       </h3>
                         <div class="blogdesc small">
-                            By Coming soon  |
-                            00 Aug 2000   <br>
+                        <?php echo $person[$j]['description'];?>
+                              <br>
                         </div>
                         <a href="blog-inner.php">Read More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-6 col-xs-6 blog-col">
-                <div class="blog-box">
-                    <div class="blog-thumb">
-                        <a href="blog/our-experience-of-air-travel-from-mumbai-to-dubai-during-covid-pandemic.html">
-                            <img  class="img-responsive img-rounded" style="background-image: url(img/blog/our_experience_of_air_travel_from_mumbai_to_dubai_during_covid_pandemic-298.webp)"><!-- thumb300x169 -->
-                        </a>
-                    </div>
-                    <div class="dateview"><span class="day">24</span><br>Aug</div>
-                    <div class="blog-body">
-                        <h3 class="blog-title cc-margin-top cc-margin-bottom-0">
-                            Our experience of air travel from M...                        </h3>
-                        <div class="blogdesc small">
-                            By Ashish Life Holidays |
-                            24 Aug 2020   <br>
-                        </div>
-                        <a href="blog-inner.php">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6 col-xs-6 blog-col">
-                <div class="blog-box">
-                    <div class="blog-thumb">
-                        <a href="blog/our-experience-of-air-travel-from-mumbai-to-dubai-during-covid-pandemic.html">
-                            <img  class="img-responsive img-rounded" style="background-image: url(img/blog/our_experience_of_air_travel_from_mumbai_to_dubai_during_covid_pandemic-298.webp)"><!-- thumb300x169 -->
-                        </a>
-                    </div>
-                    <div class="dateview"><span class="day">24</span><br>Aug</div>
-                    <div class="blog-body">
-                        <h3 class="blog-title cc-margin-top cc-margin-bottom-0">
-                            Our experience of air travel from M...                        </h3>
-                        <div class="blogdesc small">
-                            By Ashish Life Holidays |
-                            24 Aug 2020   <br>
-                        </div>
-                        <a href="blog-inner.php">Read More</a>
-                    </div>
-                </div>
-            </div>
+            
+            
                         
+       
+        <?php  $count++; }}}?>
         </div>
     </div>
 </div>
